@@ -32,6 +32,7 @@ import {
 } from '../components/BiodiversityCharts.tsx';
 import { BrandLogoIcon } from '../components/BrandMark.tsx';
 import { GeminiInterpreterPanel } from '../components/GeminiInterpreterPanel.tsx';
+import { PWAInstallButton } from '../components/PWAInstallControls.tsx';
 import { useAuth } from '../context/AuthContext.tsx';
 import { apiFetch } from '../lib/apiClient.ts';
 import {
@@ -490,6 +491,7 @@ export function UserDashboard({ onNavigate }: { onNavigate: (path: string) => vo
             <div className="text-xs font-semibold truncate">{profile?.fullName || user?.displayName || 'Researcher'}</div>
             <div className="text-[11px] text-emerald-200/75 truncate">{user?.email}</div>
           </div>
+          <PWAInstallButton variant="sidebar" className="mb-1" />
           <button
             type="button"
             onClick={() => void logout().then(() => onNavigate('/'))}
@@ -1522,7 +1524,9 @@ export function UserDashboard({ onNavigate }: { onNavigate: (path: string) => vo
 
           {/* 9. PROFILE AND SETTINGS */}
           {activeNav === 'profile' && (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="space-y-6">
+              <PWAInstallButton variant="card" />
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
               <div className="lg:col-span-4 bg-white border border-slate-200 rounded-xl p-6 h-fit">
                 <div className="w-14 h-14 rounded-full bg-[#123D2B] text-white font-display font-bold text-xl flex items-center justify-center mb-4">
                   {(profile?.fullName || user?.email || 'R').slice(0, 2).toUpperCase()}
@@ -1614,6 +1618,7 @@ export function UserDashboard({ onNavigate }: { onNavigate: (path: string) => vo
                   Save Profile Changes
                 </button>
               </form>
+              </div>
             </div>
           )}
         </main>

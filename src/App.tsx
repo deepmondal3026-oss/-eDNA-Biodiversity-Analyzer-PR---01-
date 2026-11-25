@@ -6,6 +6,7 @@
 import React, { useEffect, useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { ErrorBoundary } from './components/ErrorBoundary.tsx';
+import { OfflineIndicator } from './components/PWAInstallControls.tsx';
 import { AuthProvider, useAuth } from './context/AuthContext.tsx';
 import { AdminControlCenter } from './pages/AdminControlCenter.tsx';
 import { EmailVerificationGate, LoginPage, RegisterPage } from './pages/AuthPages.tsx';
@@ -90,6 +91,7 @@ export default function App() {
     <ErrorBoundary>
       <AuthProvider>
         <AppRouter />
+        <OfflineIndicator />
       </AuthProvider>
     </ErrorBoundary>
   );

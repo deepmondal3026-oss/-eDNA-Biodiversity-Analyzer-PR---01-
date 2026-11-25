@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2, Database, FileSpreadsheet, FlaskConical, Globe2, Microscope, ShieldCheck } from 'lucide-react';
 import { BrandLogoIcon, ResilientImage } from '../components/BrandMark.tsx';
+import { PWAInstallButton } from '../components/PWAInstallControls.tsx';
 
 interface LandingPageProps {
   onNavigate: (path: string) => void;
@@ -105,6 +106,7 @@ export function LandingPage({ onNavigate, isAuthenticated }: LandingPageProps) {
               >
                 Learn More
               </a>
+              <PWAInstallButton variant="hero" />
               {!isAuthenticated && (
                 <button
                   type="button"
@@ -460,7 +462,8 @@ export function LandingPage({ onNavigate, isAuthenticated }: LandingPageProps) {
             <BrandLogoIcon className="w-6 h-6" />
             <span>eDNA Biodiversity Explorer · Identify. Analyze. Preserve.</span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
+            <PWAInstallButton variant="footer" />
             <button type="button" onClick={() => onNavigate('/login')} className="hover:text-white transition-colors">
               Sign In
             </button>
